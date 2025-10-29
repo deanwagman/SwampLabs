@@ -224,6 +224,38 @@ a:visited {
   z-index: 1;
 }
 
+/* Fog Layers */
+.hero__fog-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  will-change: transform;
+  filter: url(#fog-texture-1);
+  background: rgba(245, 245, 236, 0.02);
+  mix-blend-mode: overlay;
+  opacity: 0.25;
+}
+
+.hero__fog-layer--1 {
+  filter: url(#fog-texture-1);
+  background: rgba(245, 245, 236, 0.04);
+  animation: fogDrift1 70s ease-in-out infinite alternate;
+}
+
+.hero__fog-layer--2 {
+  filter: url(#fog-texture-2);
+  background: rgba(245, 245, 236, 0.03);
+  animation: fogDrift2 85s ease-in-out infinite alternate;
+  animation-delay: -20s;
+}
+
+.hero__fog-layer--3 {
+  filter: url(#fog-texture-3);
+  background: rgba(245, 245, 236, 0.02);
+  animation: fogDrift3 60s ease-in-out infinite alternate;
+  animation-delay: -40s;
+}
+
 .hero__content {
   position: relative;
   z-index: 2;
@@ -286,6 +318,34 @@ a:visited {
 
   to {
     opacity: 0.8;
+  }
+}
+
+/* Fog Drift Animations */
+@keyframes fogDrift1 {
+  from {
+    transform: translateX(-20%) translateY(10%);
+  }
+  to {
+    transform: translateX(20%) translateY(-5%);
+  }
+}
+
+@keyframes fogDrift2 {
+  from {
+    transform: translateX(15%) translateY(15%);
+  }
+  to {
+    transform: translateX(-15%) translateY(-10%);
+  }
+}
+
+@keyframes fogDrift3 {
+  from {
+    transform: translateX(-25%) translateY(5%);
+  }
+  to {
+    transform: translateX(25%) translateY(-15%);
   }
 }
 
@@ -543,6 +603,14 @@ a:visited {
 
   .hero__content {
     animation: none;
+  }
+
+  /* Disable fog animations on mobile for performance */
+  .hero__fog-layer--1,
+  .hero__fog-layer--2,
+  .hero__fog-layer--3 {
+    animation: none;
+    opacity: 0.3;
   }
 }
 
