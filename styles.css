@@ -813,7 +813,7 @@ a {
 }
 
 .loaded {
-  animation: fadeIn 1.2s ease-in-out forwards;
+  animation: fadeIn 1.2s ease-in-out;
 }
 
 @keyframes fadeIn {
