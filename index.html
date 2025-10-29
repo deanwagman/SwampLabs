@@ -1,23 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Swamp Labs - From the swamp we build</title>
-    <meta name="description" content="Creative, resilient software crafted with care and curiosity. Swamp Labs builds thoughtful software, alive and rooted in curiosity.">
-    
+    <meta name="description"
+        content="Creative, resilient software crafted with care and curiosity. Swamp Labs builds thoughtful software, alive and rooted in curiosity.">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    
+
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+    <!-- SVG Noise Filter -->
+    <svg style="position: absolute; width: 0; height: 0;">
+      <defs>
+        <filter id="noise-texture">
+          <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="5" seed="2" />
+          <feColorMatrix type="saturate" values="0" />
+          <feComponentTransfer>
+            <feFuncA type="discrete" tableValues="0 1" />
+          </feComponentTransfer>
+        </filter>
+      </defs>
+    </svg>
+
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav__container">
@@ -35,9 +53,9 @@
     <section class="hero">
         <div class="hero__background"></div>
         <div class="hero__content">
-            <h1 class="hero__title">From the swamp we build</h1>
-            <p class="hero__subtitle">Creative, resilient software crafted with care and curiosity</p>
-            <p class="hero__tagline">Thoughtful software, alive and rooted in curiosity</p>
+            <img src="images/logo.png" alt="Swamp Labs" class="hero__logo">
+            <h1 class="hero__title">From the swamp &mdash; we build</h1>
+            <p class="hero__subtitle">Creative software crafted with care and curiosity</p>
         </div>
     </section>
 
@@ -47,30 +65,19 @@
             <h2 class="about__title">About Swamp Labs</h2>
             <div class="about__content">
                 <div class="about__text">
-                    <p>In the depths of the digital wilderness, where creativity meets engineering, Swamp Labs emerges as a studio dedicated to crafting software that breathes with life and purpose. We believe that the best digital experiences grow from the fertile ground of thoughtful design and resilient code.</p>
-                    
-                    <p>Our philosophy is rooted in the organic principles of the swamp—where every element serves a purpose, where complexity emerges from simple, interconnected systems, and where beauty is found in the balance between wild creativity and careful cultivation.</p>
-                    
-                    <p>We don't just build software; we nurture digital ecosystems that adapt, evolve, and thrive in the ever-changing landscape of technology.</p>
+                    <p>In the depths of the digital wilderness, where creativity meets engineering, Swamp Labs emerges
+                        as a studio dedicated to crafting software that breathes with life and purpose. We believe that
+                        the best digital experiences grow from the fertile ground of thoughtful design and resilient
+                        code.</p>
+
+                    <p>Our philosophy is rooted in the organic principles of the swamp—where every element serves a
+                        purpose, where complexity emerges from simple, interconnected systems, and where beauty is found
+                        in the balance between wild creativity and careful cultivation.</p>
+
+                    <p>We don't just build software; we nurture digital ecosystems that adapt, evolve, and thrive in the
+                        ever-changing landscape of technology.</p>
                 </div>
-                
-                <div class="about__principles">
-                    <h3 class="about__principles-title">Our Principles</h3>
-                    <ul class="about__principles-list">
-                        <li class="about__principle">
-                            <span class="about__principle-icon">🌱</span>
-                            <span class="about__principle-text">Thoughtfulness</span>
-                        </li>
-                        <li class="about__principle">
-                            <span class="about__principle-icon">🎨</span>
-                            <span class="about__principle-text">Creativity</span>
-                        </li>
-                        <li class="about__principle">
-                            <span class="about__principle-icon">💚</span>
-                            <span class="about__principle-text">Care & Quality</span>
-                        </li>
-                    </ul>
-                </div>
+
             </div>
         </div>
     </section>
@@ -78,19 +85,16 @@
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="contact__container">
-            <h2 class="contact__title">Contact Us</h2>
             <div class="contact__content">
-                <p class="contact__text">We'd love to hear from you. Drop us a line at <a href="mailto:hello@swamplabs.com" class="contact__email">hello@swamplabs.com</a></p>
+                <img src="images/email.png" alt="Swamp Labs mascot holding an email" class="contact__mascot">
+                <div>
+                    <h2 class="contact__title">Contact Us</h2>
+                    <p class="contact__text">We&rsquo;d love to hear from you. <br>Drop us a line at <a
+                            href="mailto:hello@swamplabs.com" class="contact__email">hello@swamplabs.com</a></p>
+                </div>
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer__container">
-            <p class="footer__copyright">&copy; 2025 Swamp Labs. All rights reserved.</p>
-        </div>
-    </footer>
 
     <!-- Smooth scroll script -->
     <script>
@@ -108,6 +112,46 @@
             });
         });
 
+        // Scroll-based hero animations
+        let ticking = false;
+
+        function updateScrollAnimations() {
+            const scrollY = window.scrollY;
+            const nav = document.querySelector('.nav');
+            const heroLogo = document.querySelector('.hero__logo');
+            const heroTitle = document.querySelector('.hero__title');
+            const heroSubtitle = document.querySelector('.hero__subtitle');
+
+            if (scrollY > 100) {
+                // Show nav, hide hero logo, show title and subtitle
+                nav.classList.add('visible');
+                heroLogo.classList.add('hidden');
+                heroTitle.classList.add('visible');
+                heroSubtitle.classList.add('visible');
+            } else {
+                // Hide nav, show hero logo, hide title and subtitle
+                nav.classList.remove('visible');
+                heroLogo.classList.remove('hidden');
+                heroTitle.classList.remove('visible');
+                heroSubtitle.classList.remove('visible');
+            }
+
+            ticking = false;
+        }
+
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateScrollAnimations);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', requestTick);
+
+        // Initialize on page load
+        updateScrollAnimations();
+
     </script>
 </body>
+
 </html>
