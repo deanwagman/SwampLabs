@@ -55,7 +55,7 @@ body {
   font-size: var(--font-size-body);
   line-height: 1.6;
   color: var(--color-charcoal);
-  background-color: var(--color-off-white);
+  background-color: var(--color-swamp-green);
   overflow-x: hidden;
   margin: 0;
   padding: 0;
@@ -801,5 +801,36 @@ a {
   :root {
     --color-neon-lime: #FFFF00;
     --color-off-white: #FFFFFF;
+  }
+}
+
+/* Page Load Animation */
+.page-load {
+  opacity: 0;
+  background-color: var(--color-swamp-green);
+  filter: blur(4px);
+  transition: none;
+}
+
+.loaded {
+  animation: fadeIn 1.2s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .loaded {
+    animation: none;
+    opacity: 1;
   }
 }

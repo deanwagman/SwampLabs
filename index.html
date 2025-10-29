@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
+<body class="page-load">
     <!-- SVG Noise Filter -->
     <svg style="position: absolute; width: 0; height: 0;">
       <defs>
@@ -118,7 +118,7 @@
                 <div>
                     <h2 class="contact__title">Contact Us</h2>
                     <p class="contact__text">We&rsquo;d love to hear from you. <br>Drop us a line at <a
-                            href="mailto:hello@swamplabs.com" class="contact__email">hello@swamplabs.com</a></p>
+                            href="mailto:hello@swamplabs.com" class="contact__email">hello@swamp-labs.com</a></p>
                 </div>
             </div>
         </div>
@@ -183,6 +183,12 @@
 
         // Initialize on page load
         updateScrollAnimations();
+
+        // Page fade-in animation
+        window.addEventListener('load', function() {
+            document.body.classList.remove('page-load');
+            document.body.classList.add('loaded');
+        });
 
     </script>
 </body>
