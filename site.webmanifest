@@ -1,0 +1,21 @@
+{
+  "name": "Swamp Labs",
+  "short_name": "Swamp Labs",
+  "description": "Creative, resilient software crafted with care and curiosity.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#4e7d4e",
+  "theme_color": "#234c2a",
+  "icons": [
+    {
+      "src": "/images/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/logo.png",
+      "sizes": "800x800",
+      "type": "image/png"
+    }
+  ]
+}
