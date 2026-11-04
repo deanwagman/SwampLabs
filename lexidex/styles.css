@@ -195,17 +195,6 @@ button, input, textarea, select { font: inherit; }
 .button:active { transform: translateY(0); }
 .button-small { min-height: 40px; padding-inline: 17px; border-radius: var(--radius-study); font-size: 13px; }
 .button-wide { width: 100%; }
-.button[aria-disabled="true"] {
-  cursor: default;
-  background: color-mix(in srgb, var(--brand-navy) 78%, var(--paper-base));
-  box-shadow: none;
-}
-
-.button[aria-disabled="true"]:hover {
-  background: color-mix(in srgb, var(--brand-navy) 78%, var(--paper-base));
-  box-shadow: none;
-  transform: none;
-}
 
 .hero {
   position: relative;
@@ -281,9 +270,19 @@ button, input, textarea, select { font: inherit; }
   margin-top: 34px;
 }
 
-.button-app-store { min-width: 214px; justify-content: flex-start; }
-.button-app-store span:last-child { display: grid; line-height: 1.05; font-size: 17px; }
-.button-app-store small { font-size: 9px; font-weight: 600; letter-spacing: 0.2px; }
+.app-store-badge {
+  display: inline-block;
+  margin: 10px;
+  line-height: 0;
+  text-decoration: none;
+}
+
+.app-store-badge img {
+  height: 40px;
+  width: auto;
+  max-width: none;
+}
+
 .hero-actions p { margin: 0; color: var(--paper-text-tertiary); font-size: 13px; }
 .hero-actions strong { color: var(--brand-navy); }
 
@@ -504,8 +503,10 @@ button, input, textarea, select { font: inherit; }
   line-height: 0.92;
 }
 .price-subtitle { margin: 15px 0 0; color: var(--paper-text-tertiary); font-size: 14px; line-height: 1.5; }
-.price-panel ul { display: flex; justify-content: center; flex-wrap: wrap; gap: 9px 22px; margin: 29px 0; padding: 0; color: var(--paper-text-secondary); font-size: 12px; font-weight: 650; line-height: 1.5; list-style: none; }
+.price-panel ul { display: flex; justify-content: center; flex-wrap: wrap; gap: 9px 22px; margin: 29px 0 0; padding: 0; color: var(--paper-text-secondary); font-size: 12px; font-weight: 650; line-height: 1.5; list-style: none; }
 .price-panel li::before { content: "✓"; margin-right: 6px; color: var(--green); }
+.store-availability { margin: 18px 0 0; color: var(--paper-text-secondary); font-size: 14px; font-weight: 700; line-height: 1.4; }
+.price-panel .button { margin-top: 16px; }
 .compatibility { margin: 16px 0 0; color: var(--paper-text-disabled); font-size: 10px; line-height: 1.5; }
 
 .faq-section { padding-top: clamp(64px, 7vw, 88px); }
@@ -529,21 +530,13 @@ button, input, textarea, select { font: inherit; }
 .footer-inner nav { display: flex; gap: 20px; }
 .footer-inner nav a { text-underline-offset: 4px; }
 .footer-inner > p { justify-self: end; margin: 0; }
-
-.toast {
-  position: fixed;
-  z-index: 200;
-  left: 50%;
-  bottom: 24px;
-  transform: translateX(-50%);
-  padding: 12px 17px;
-  border: 1px solid var(--paper-border);
-  border-radius: var(--radius-study);
-  background: var(--paper-elevated);
-  color: var(--paper-text-secondary);
-  box-shadow: var(--shadow-study);
-  font-size: 13px;
-  font-weight: 700;
+.footer-inner > p.legal-credit {
+  grid-column: 1 / -1;
+  justify-self: center;
+  max-width: 42rem;
+  font-size: 10px;
+  line-height: 1.45;
+  text-align: center;
 }
 
 /* Shared content-page shell: support and privacy */
